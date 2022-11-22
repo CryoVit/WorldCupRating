@@ -37,6 +37,7 @@ m = {
     ("Senegal", "Netherlands"): (0, 2),
     ("England", "Iran"): (6, 2),
     ("United States", "Wales"): (1, 1),
+    ("Argentina", "Saudi Arabia"): (1, 2),
 }
 
 def get_match(match_id, match, score):
@@ -58,6 +59,6 @@ def get_ranking(stage):
     print()
     
 for index, (match, score) in enumerate(m.items()):
-    get_match(index, match, score)
+    get_match(index + 1, match, score)
 
 get_ranking("1st Group Stage")
