@@ -29,7 +29,26 @@ c = {
     "Australia": Rating(),
     "Denmark": Rating(),
     "Tunisia": Rating(),
-
+    # Group E
+    "Spain": Rating(),
+    "Costa Rica": Rating(),
+    "Germany": Rating(),
+    "Japan": Rating(),
+    # Group F
+    "Belgium": Rating(),
+    "Canada": Rating(),
+    "Morocco": Rating(),
+    "Croatia": Rating(),
+    # Group G
+    "Brazil": Rating(),
+    "Serbia": Rating(),
+    "Switzerland": Rating(),
+    "Cameroon": Rating(),
+    # Group H
+    "Portugal": Rating(),
+    "Ghana": Rating(),
+    "Uruguay": Rating(),
+    "Korea Republic": Rating(),
 }
 m = {
     # 1st Group Stage: 1-16
@@ -41,6 +60,8 @@ m = {
     ("Denmark", "Tunisia"): (0, 0),
     ("Mexico", "Poland"): (0, 0),
     ("France", "Australia"): (4, 1),
+    ("Morocco", "Croatia"): (0, 0),
+    ("Germany", "Japan"): (1, 2),
 }
 
 def get_match(match_id, match, score):
