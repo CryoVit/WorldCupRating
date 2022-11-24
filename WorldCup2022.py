@@ -62,6 +62,8 @@ m = {
     ("France", "Australia"): (4, 1),
     ("Morocco", "Croatia"): (0, 0),
     ("Germany", "Japan"): (1, 2),
+    ("Spain", "Costa Rica"): (7, 0),
+    ("Belgium", "Canada"): (1, 0),
 }
 
 def get_match(match_id, match, score):
