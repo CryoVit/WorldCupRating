@@ -55,15 +55,19 @@ m = {
     ("Qatar", "Ecuador"): (0, 2),
     ("Senegal", "Netherlands"): (0, 2),
     ("England", "Iran"): (6, 2),
-    ("United States", "Wales"): (1, 1),
+    ("United States", "Wales"): (1, 1), # 4
     ("Argentina", "Saudi Arabia"): (1, 2),
     ("Denmark", "Tunisia"): (0, 0),
     ("Mexico", "Poland"): (0, 0),
-    ("France", "Australia"): (4, 1),
+    ("France", "Australia"): (4, 1), # 8
     ("Morocco", "Croatia"): (0, 0),
     ("Germany", "Japan"): (1, 2),
     ("Spain", "Costa Rica"): (7, 0),
-    ("Belgium", "Canada"): (1, 0),
+    ("Belgium", "Canada"): (1, 0), # 12
+    ("Switzerland", "Cameroon"): (1, 0),
+    ("Uruguay", "Korea Republic"): (0, 0),
+    ("Portugal", "Ghana"): (3, 2),
+    ("Brazil", "Serbia"): (2, 0), # 16
 }
 
 def get_match(match_id, match, score):
@@ -86,5 +90,5 @@ def get_ranking(stage):
     
 for index, (match, score) in enumerate(m.items()):
     get_match(index + 1, match, score)
-
-get_ranking("1st Group Stage")
+    if index == 15:
+        get_ranking("1st Group Stage")
