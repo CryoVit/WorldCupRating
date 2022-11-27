@@ -73,6 +73,12 @@ m = {
     ("Qatar", "Senegal"): (1, 3),
     ("Netherlands", "Ecuador"): (1, 1),
     ("United States", "England"): (0, 0), # 20
+    ("Tunisia", "Australia"): (0, 1),
+    ("Poland", "Saudi Arabia"): (2, 0),
+    ("France", "Denmark"): (2, 1),
+    ("Argentina", "Mexico"): (2, 0), # 24
+    ("Japan", "Costa Rica"): (0, 1),
+    ("Belgium", "Morocco"): (0, 2),
 }
 
 def get_match(match_id, match, score):
