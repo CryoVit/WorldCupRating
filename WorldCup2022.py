@@ -79,6 +79,8 @@ m = {
     ("Argentina", "Mexico"): (2, 0), # 24
     ("Japan", "Costa Rica"): (0, 1),
     ("Belgium", "Morocco"): (0, 2),
+    ("Croatia", "Canada"): (4, 1),
+    ("Spain", "Germany"): (1, 1), # 28
 }
 
 def get_match(match_id, match, score):
@@ -92,16 +94,21 @@ def get_match(match_id, match, score):
         c[match[1]], c[match[0]] = rate_1vs1(c[match[1]], c[match[0]])
     print(f" -> {c[match[0]].mu:.0f} vs {c[match[1]].mu:.0f}")
 
-def get_ranking(stage):
+r = {}
+
+def get_ranking(stage, cached = True):
     print()
     print(f"Ranking after {stage}:")
     for index, country in enumerate(sorted(c, key=lambda x: c[x].mu, reverse=True)):
+        if cached:
+            print(f"({r[country]:02d} ->)", end = '')
         print(f"{index + 1:02d}. {country}: {c[country].mu:.0f} ± {c[country].sigma:.0f}")
+        r[country] = index + 1
     print()
     
 for index, (match, score) in enumerate(m.items()):
     get_match(index + 1, match, score)
     if index == 15:
-        get_ranking("1st Group Stage")
+        get_ranking("1st Group Stage", cached = False)
 
 get_ranking("2nd Group Stage")
