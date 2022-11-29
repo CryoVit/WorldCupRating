@@ -81,6 +81,10 @@ m = {
     ("Belgium", "Morocco"): (0, 2),
     ("Croatia", "Canada"): (4, 1),
     ("Spain", "Germany"): (1, 1), # 28
+    ("Cameroon", "Serbia"): (3, 3),
+    ("Korea Republic", "Ghana"): (2, 3),
+    ("Brazil", "Switzerland"): (1, 0),
+    ("Portugal", "Uruguay"): (2, 0), # 32
 }
 
 def get_match(match_id, match, score):
@@ -110,5 +114,5 @@ for index, (match, score) in enumerate(m.items()):
     get_match(index + 1, match, score)
     if index == 15:
         get_ranking("1st Group Stage", cached = False)
-
-get_ranking("2nd Group Stage")
+    if index == 31:
+        get_ranking("2nd Group Stage")
