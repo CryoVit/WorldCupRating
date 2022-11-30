@@ -179,7 +179,7 @@ def get_ranking(stage, advance):
     print(f"Ranking after {stage}:")
     for index, country in enumerate(sorted(c, key=lambda x: c[x].mu, reverse=True)):
         if f[country] <= advance:
-            print(f"#{index + 1:02d}. {country} (F#{f[country]}): {c[country].mu:.0f} ± {c[country].sigma:.0f}")
+            print(f"{index + 1:02d}. {country} (F{f[country]:02d}): {c[country].mu:.0f} ± {c[country].sigma:.0f}")
     print()
 
 # Group stage
