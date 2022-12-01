@@ -1,5 +1,5 @@
 from trueskill import Rating, rate_1vs1, TrueSkill
-# from random import random
+
 env = TrueSkill(
     mu = 1500,
     sigma = 750,
@@ -7,7 +7,7 @@ env = TrueSkill(
     tau = 5,
     draw_probability = 1 / 6
 )
-env.make_as_global()
+
 g = (
     ("Qatar", "Ecuador", "Senegal", "Netherlands"),
     ("England", "Iran", "United States", "Wales"),
@@ -90,8 +90,8 @@ def get_match(mid, match, score):
     else:
         c[match[1]], c[match[0]] = rate_1vs1(c[match[1]], c[match[0]])
         gs[match[1]] += 3
-    gd[match[0]] = gd.get(match[0], 0) + score[0] - score[1]
-    gd[match[1]] = gd.get(match[1], 0) + score[1] - score[0]
+    gd[match[0]] += score[0] - score[1]
+    gd[match[1]] += score[1] - score[0]
     print(f" -> {c[match[0]].mu:.0f} vs {c[match[1]].mu:.0f}")
 
 def get_ranking(stage, sid):
@@ -121,10 +121,12 @@ def get_ranking(stage, sid):
         print()
     
 if __name__ == "__main__":
+    env.make_as_global()
     for group in g:
         for country in group:
             c[country] = Rating()
             gs[country] = 0
+            gd[country] = 0
     for index, (match, score) in enumerate(m.items()):
         get_match(index + 1, match, score)
         if index == 15:
