@@ -97,10 +97,10 @@ def get_match(mid, match, score):
 def get_ranking(stage, sid):
     print()
     print(f"Ranking after {stage}:")
-    for index, country in enumerate(sorted(c, key=lambda x: c[x].mu, reverse=True)):
+    for index, country in enumerate(sorted(c, key=lambda x: c[x].mu - c[x].sigma, reverse=True)):
         if sid:
             print(f"({r[country]:02d}->)", end = '')
-        print(f"{index + 1:02d}. {country}: {c[country].mu:.0f}")
+        print(f"{index + 1:02d}. {country}: {c[country].mu:.0f} - {c[country].sigma:.0f}")
         r[country] = index + 1
     print()
     if sid <= 2:
