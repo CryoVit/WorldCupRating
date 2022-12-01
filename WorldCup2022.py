@@ -8,16 +8,16 @@ env = TrueSkill(
     draw_probability = 1 / 6
 )
 env.make_as_global()
-g = [
-    ["Qatar", "Ecuador", "Senegal", "Netherlands"],
-    ["England", "Iran", "United States", "Wales"],
-    ["Argentina", "Saudi Arabia", "Mexico", "Poland"],
-    ["France", "Australia", "Denmark", "Tunisia"],
-    ["Spain", "Costa Rica", "Germany", "Japan"],
-    ["Belgium", "Canada", "Morocco", "Croatia"],
-    ["Brazil", "Serbia", "Switzerland", "Cameroon"],
-    ["Portugal", "Ghana", "Uruguay", "Korea Republic"],
-] # groups
+g = (
+    ("Qatar", "Ecuador", "Senegal", "Netherlands"),
+    ("England", "Iran", "United States", "Wales"),
+    ("Argentina", "Saudi Arabia", "Mexico", "Poland"),
+    ("France", "Australia", "Denmark", "Tunisia"),
+    ("Spain", "Costa Rica", "Germany", "Japan"),
+    ("Belgium", "Canada", "Morocco", "Croatia"),
+    ("Brazil", "Serbia", "Switzerland", "Cameroon"),
+    ("Portugal", "Ghana", "Uruguay", "Korea Republic"),
+ ) # groups
 
 gn = ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H') # group names
 
@@ -61,6 +61,10 @@ m = {
     ("Netherlands", "Qatar"): (2, 0),
     ("Wales", "England"): (0, 3),
     ("Iran", "United States"): (0, 1), # 36
+    ("Tunisia", "France"): (1, 0),
+    ("Australia", "Denmark"): (1, 0),
+    ("Poland", "Argentina"): (0, 2),
+    ("Saudi Arabia", "Mexico"): (1, 2), # 40
 } # matches
 
 c = {} # countries
