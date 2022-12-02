@@ -65,6 +65,10 @@ m = {
     ("Australia", "Denmark"): (1, 0),
     ("Poland", "Argentina"): (0, 2),
     ("Saudi Arabia", "Mexico"): (1, 2), # 40
+    ("Croatia", "Belgium"): (0, 0),
+    ("Canada", "Morocco"): (1, 2),
+    ("Japan", "Spain"): (2, 1),
+    ("Costa Rica", "Germany"): (2, 4), # 44
 } # matches
 
 c = {} # countries
