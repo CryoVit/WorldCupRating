@@ -142,9 +142,11 @@ a = set() # advance to next round
 
 lim = (32, 32, 32, 16, 8, 4, 4)
 
+rt = lambda x: x.mu - 2 * x.sigma
+
 def get_match(mid, match, score):
     print(f"{mid:02d}: {match[0]} {score[0]}:{score[1]} {match[1]}")
-    print(f"{c[match[0]].mu:.0f} vs {c[match[1]].mu:.0f}", end = '')
+    print(f"{rt(c[match[0]]):.0f} vs {rt(c[match[1]]):.0f}", end = '')
     if score[0] > score[1]:
         c[match[0]], c[match[1]] = rate_1vs1(c[match[0]], c[match[1]])
         gs[match[0]] += 3
@@ -157,17 +159,17 @@ def get_match(mid, match, score):
         gs[match[1]] += 3
     gd[match[0]] += score[0] - score[1]
     gd[match[1]] += score[1] - score[0]
-    print(f" -> {c[match[0]].mu:.0f} vs {c[match[1]].mu:.0f}")
+    print(f" -> {rt(c[match[0]]):.0f} vs {rt(c[match[1]]):.0f}")
 
 def get_ranking(stage, sid):
     print()
     print(f"Ranking after {stage}:")
-    for index, country in enumerate(sorted(c, key=lambda x: c[x].mu - c[x].sigma, reverse=True)):
+    for index, country in enumerate(sorted(c, key=lambda x: rt(c[x]), reverse=True)):
         if f[country] > lim[sid]:
             continue
         if sid:
             print(f"({r[country]:02d}->)", end = '')
-        print(f"{index + 1:02d}. {country}: {c[country].mu:.0f} - {c[country].sigma:.0f}")
+        print(f"{index + 1:02d}. {country}: {c[country].mu:.0f} - {2 * c[country].sigma:.0f}")
         r[country] = index + 1
     print()
     if sid <= 2:
