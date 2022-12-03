@@ -69,6 +69,10 @@ m = {
     ("Canada", "Morocco"): (1, 2),
     ("Japan", "Spain"): (2, 1),
     ("Costa Rica", "Germany"): (2, 4), # 44
+    ("Korea Republic", "Portugal"): (2, 1),
+    ("Ghana", "Uruguay"): (0, 2),
+    ("Cameroon", "Brazil"): (1, 0),
+    ("Serbia", "Switzerland"): (0, 1), # 48
 } # matches
 
 c = {} # countries
@@ -139,5 +143,5 @@ if __name__ == "__main__":
             get_ranking("1st Group Stage", 0)
         if index == 31:
             get_ranking("2nd Group Stage", 1)
-
-    get_ranking("3rd Group Stage", 2)
+        if index == 47:
+            get_ranking("3rd Group Stage", 2)
