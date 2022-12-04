@@ -73,6 +73,9 @@ m = {
     ("Ghana", "Uruguay"): (0, 2),
     ("Cameroon", "Brazil"): (1, 0),
     ("Serbia", "Switzerland"): (0, 1), # 48
+    # Round of 16: 49-56
+    ("Netherlands", "United States"): (3, 1),
+    ("Argentina", "Australia"): (2, 1), # 50
 } # matches
 
 c = {} # countries
@@ -85,6 +88,10 @@ gd = {} # goal difference
 
 a = set() # advance to next round
 
+new_a = set()
+
+lw = set() # last win or loss
+
 rt = lambda x: x.mu - 2 * x.sigma
 
 def get_match(mid, match, score):
@@ -93,6 +100,7 @@ def get_match(mid, match, score):
     if score[0] > score[1]:
         c[match[0]], c[match[1]] = rate_1vs1(c[match[0]], c[match[1]])
         gs[match[0]] += 3
+        lw.add(match[0])
     elif score[0] == score[1]:
         c[match[0]], c[match[1]] = rate_1vs1(c[match[0]], c[match[1]], drawn=True)
         gs[match[0]] += 1
@@ -100,23 +108,28 @@ def get_match(mid, match, score):
     else:
         c[match[1]], c[match[0]] = rate_1vs1(c[match[1]], c[match[0]])
         gs[match[1]] += 3
+        lw.add(match[1])
     gd[match[0]] += score[0] - score[1]
     gd[match[1]] += score[1] - score[0]
     print(f" -> {rt(c[match[0]]):.0f} vs {rt(c[match[1]]):.0f}")
 
 def get_ranking(stage, sid):
+    global a
     print()
     print(f"Ranking after {stage}:")
-    for index, country in enumerate(sorted(c, key=lambda x: rt(c[x]), reverse=True)):
-        if sid:
-            print(f"({r[country]:02d}->)", end = '')
-        print(f"{index + 1:02d}. {country}: {c[country].mu:.0f} - {2 * c[country].sigma:.0f}")
-        r[country] = index + 1
-    print()
+    
     if sid <= 2:
+        for index, country in enumerate(sorted(c, key=lambda x: rt(c[x]), reverse=True)):
+            if sid: # sid = 1, 2
+                print(f"({r[country]:02d}->)", end = '')
+            print(f"{index + 1:02d}. {country}: {c[country].mu:.0f} - {2 * c[country].sigma:.0f}")
+            r[country] = index + 1
+        print()
         print(f"Group Scoreboard after {stage}:")
         for index, group in enumerate(g):
             board = sorted([(country, gs[country], gd[country]) for country in group], key=lambda x: (x[1], x[2]), reverse=True)
+            if sid == 2 and index == 7: # Korea Republic > Uruguay
+                board[1], board[2] = board[2], board[1]
             print(f"Group {gn[index]}:")
             for rank, country in enumerate(board):
                 if sid == 2:
@@ -129,6 +142,23 @@ def get_ranking(stage, sid):
                     print('', end = '\t')
                 print(f"{country[0]} {country[1]}({country[2]:+d})")
         print()
+        lw.clear()
+    
+    else:
+        for index, country in enumerate(sorted(c, key=lambda x: rt(c[x]), reverse=True)):
+            if country in a:
+                if country in lw:
+                    print("[+]", end = '\t')
+                    new_a.add(country)
+                else:
+                    print("[-]", end = '\t')
+                print(f"({r[country]:02d}->)", end = '')
+                print(f"{index + 1:02d}. {country}: {c[country].mu:.0f} - {2 * c[country].sigma:.0f}")
+            r[country] = index + 1
+        print()
+        a.clear()
+        a = new_a
+        lw.clear()
     
 if __name__ == "__main__":
     env.make_as_global()
@@ -145,3 +175,5 @@ if __name__ == "__main__":
             get_ranking("2nd Group Stage", 1)
         if index == 47:
             get_ranking("3rd Group Stage", 2)
+
+get_ranking("Round of 16", 3)
