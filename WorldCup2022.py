@@ -76,6 +76,8 @@ m = {
     # Round of 16: 49-56
     ("Netherlands", "United States"): (3, 1),
     ("Argentina", "Australia"): (2, 1), # 50
+    ("France", "Poland"): (3, 1),
+    ("England", "Senegal"): (3, 0), # 52
 } # matches
 
 c = {} # countries
