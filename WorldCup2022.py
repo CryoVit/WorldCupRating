@@ -78,6 +78,8 @@ m = {
     ("Argentina", "Australia"): (2, 1), # 50
     ("France", "Poland"): (3, 1),
     ("England", "Senegal"): (3, 0), # 52
+    ("Japan", "Croatia"): (1 + 1, 1 + 3),
+    ("Brazil", "Korea Republic"): (4, 1), # 54
 } # matches
 
 c = {} # countries
