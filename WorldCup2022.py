@@ -82,6 +82,11 @@ m = {
     ("Brazil", "Korea Republic"): (4, 1), # 54
     ("Morocco", "Spain"): (0 + 3, 0 + 0),
     ("Portugal", "Switzerland"): (6, 1), # 56
+    # Quarterfinals: 57-60
+    ("Croatia", "Brazil"): (1 + 4, 1 + 2),
+    ("Netherlands", "Argentina"): (2 + 3, 2 + 4), # 58
+    ("Morocco", "Portugal"): (1, 0),
+    ("England", "France"): (1, 2), # 60
 } # matches
 
 c = {} # countries
@@ -183,4 +188,6 @@ if __name__ == "__main__":
             get_ranking("3rd Group Stage", 2)
         if index == 55:
             get_ranking("Round of 16", 3)
+        if index == 59:
+            get_ranking("Quarterfinals", 4)
 # print(a)
