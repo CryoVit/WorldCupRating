@@ -89,6 +89,7 @@ m = {
     ("England", "France"): (1, 2), # 60
     # Semifinals: 61-62
     ("Argentina", "Croatia"): (3, 0),
+    ("France", "Morocco"): (2, 0), # 62
 } # matches
 
 c = {} # countries
