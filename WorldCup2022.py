@@ -90,6 +90,10 @@ m = {
     # Semifinals: 61-62
     ("Argentina", "Croatia"): (3, 0),
     ("France", "Morocco"): (2, 0), # 62
+    # Third Place: 63
+    ("Croatia", "Morocco"): (2, 1), # 63
+    # Final: 64
+    ("Argentina", "France"): (3 + 4, 3 + 2), # 64
 } # matches
 
 c = {} # countries
